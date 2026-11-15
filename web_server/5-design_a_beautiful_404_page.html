@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Ceci n'est pas une page</title>
+  <style>
+    :root {
+      --bg: #0f1221;
+      --fg: #f4f1ea;
+      --muted: #9aa0b8;
+      --accent: #ff6b4a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 30%, #1d2240 0%, var(--bg) 70%);
+      color: var(--fg);
+      font-family: Georgia, "Times New Roman", serif;
+      overflow: hidden;
+      padding: 16px;
+    }
+    .stars span {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--fg);
+      border-radius: 50%;
+      animation: twinkle 3s infinite ease-in-out;
+    }
+    @keyframes twinkle { 0%, 100% { opacity: .2; } 50% { opacity: 1; } }
+    @keyframes float { 0%, 100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-14px) rotate(4deg); } }
+    main { text-align: center; position: relative; z-index: 1; max-width: 560px; }
+    .frame {
+      display: inline-block;
+      padding: 28px 40px;
+      border: 10px solid #c9a35b;
+      outline: 2px solid #7a5c25;
+      background: #e9e2d0;
+      color: #1b1b1b;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .6);
+      animation: float 6s infinite ease-in-out;
+    }
+    .code {
+      font-size: clamp(64px, 18vw, 120px);
+      font-weight: bold;
+      letter-spacing: 4px;
+      line-height: 1;
+    }
+    .caption {
+      margin-top: 12px;
+      font-style: italic;
+      font-size: clamp(18px, 4.5vw, 24px);
+    }
+    p.lead { margin-top: 36px; color: var(--muted); font-size: 18px; line-height: 1.6; }
+    a.home {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 28px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-family: Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      transition: transform .2s, box-shadow .2s;
+    }
+    a.home:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255, 107, 74, .4); }
+  </style>
+</head>
+<body>
+  <div class="stars" aria-hidden="true">
+    <span style="top:12%;left:18%"></span>
+    <span style="top:25%;left:80%;animation-delay:.5s"></span>
+    <span style="top:70%;left:10%;animation-delay:1s"></span>
+    <span style="top:82%;left:72%;animation-delay:1.5s"></span>
+    <span style="top:40%;left:92%;animation-delay:2s"></span>
+    <span style="top:58%;left:30%;animation-delay:2.5s"></span>
+    <span style="top:8%;left:55%;animation-delay:.8s"></span>
+  </div>
+  <main>
+    <div class="frame">
+      <div class="code">404</div>
+      <div class="caption">Ceci n'est pas une page</div>
+    </div>
+    <p class="lead">Like Magritte's pipe, what you are looking at is only a picture of a page.
+      The real one has drifted off somewhere we cannot find.</p>
+    <a class="home" href="/">Take me back home</a>
+  </main>
+</body>
+</html>
