@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Configures nginx with a custom X-Served-By response header holding the server hostname
+apt-get update -y
+apt-get install -y nginx
+echo "Holberton School for the win!" > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+if ! grep -q "location /redirect_me" /etc/nginx/sites-available/default; then
+	sed -i '0,/^\s*server_name/{/^\s*server_name/a \\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}
+}' /etc/nginx/sites-available/default
+fi
+if ! grep -q "error_page 404" /etc/nginx/sites-available/default; then
+	sed -i '0,/^\s*server_name/{/^\s*server_name/a \\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\tinternal;\n\t}
+}' /etc/nginx/sites-available/default
+fi
+if ! grep -q "X-Served-By" /etc/nginx/sites-available/default; then
+	# shellcheck disable=SC2016  # $hostname is an nginx variable, not a shell one
+	sed -i '0,/^\s*server_name/{/^\s*server_name/a \\tadd_header X-Served-By $hostname;
+}' /etc/nginx/sites-available/default
+fi
+service nginx restart
