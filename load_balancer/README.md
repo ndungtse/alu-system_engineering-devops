@@ -75,6 +75,7 @@ X-Served-By: 7258-web-02
 
 ## Notes
 
-- HAProxy 2.x lowercases response header names. `h1-case-adjust` restores
-  `X-Served-By` so clients see the same name that Nginx sends.
+- HAProxy 2.x lowercases response header names, so through the load balancer
+  the header shows up as `x-served-by`. HTTP header names are case-insensitive,
+  so the value is unchanged.
 - The scripts are idempotent: running them again does not duplicate configuration.
