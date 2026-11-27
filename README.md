@@ -13,6 +13,7 @@ System engineering and DevOps projects from the ALU curriculum.
 | [web_stack_debugging_0](web_stack_debugging_0) | Getting Apache to serve `Hello Holberton` from a Docker container |
 | [web_stack_debugging_1](web_stack_debugging_1) | Getting Nginx to listen on port 80 of all IPv4 addresses |
 | [web_stack_debugging_2](web_stack_debugging_2) | Running commands and Nginx as a less privileged user |
+| [web_stack_debugging_3](web_stack_debugging_3) | Finding a WordPress `500` error with `strace` and fixing it with Puppet |
 
 ## Servers
 
